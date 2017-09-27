@@ -21,26 +21,20 @@
   </head>
 
   <body>
-  <%= render partial: "layouts/navbar" %>
+    <%= render partial: "layouts/navbar" %>
 
-  <%= form_tag all_listings_path, :method => 'get' do %> 
-    <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag "Search" %>
-  <% end %>
+    <%= form_tag all_listings_path, :method => 'get' do %> 
+      <%= text_field_tag :search, params[:search] %>
+      <%= submit_tag "Search" %>
+    <% end %>
 
     <div id="flash">
-    <% flash.each do |key, value| -%>
-      <div class="alert alert-<%= key %>"><%=h value %></div>
-    <% end %>
-  </div>
-    <%= yield %>
-
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-
-  <body>
+      <% flash.each do |key, value| -%>
+        <div class="alert alert-<%= key %>">
+          <%=h value %>
+        </div>
+      <% end %>
+    </div>
     <%= yield %>
   </body>
 </html>
