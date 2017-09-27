@@ -1,0 +1,25 @@
+<div class="text-field">
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+</div>
+
+<div class="text-field">
+  <%= form.label :description %>
+  <%= form.text_field :description %>
+</div>
+
+<div class="text-field">
+  <%= form.label :location %>
+  <%= form.text_field :location %>
+</div>
+
+<div class="text-field">
+  <%= form.label :price %>
+  <%= form.text_field :price %>
+</div>
+
+<div class="image-field">
+  <%= form.label :images %>
+  <p><%= form.file_field :images, multiple: true, class: "form-control" %></p>
+</div>
+

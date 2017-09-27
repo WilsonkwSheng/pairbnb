@@ -1,0 +1,11 @@
+<% @listing.images.each do |all_img| %>
+	<%= image_tag all_img, class: "img-response" %>
+<% end %>
+
+<p>Name: <%= @listing.name %></p>
+<p>Description: <%= @listing.description %></p>
+<p>Location: <%= @listing.location %></p>
+<p>Price: <%= @listing.price %></p>
+
+<%= link_to "Back", sign_in_path %>
+

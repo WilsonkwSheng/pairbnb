@@ -1,6 +1,17 @@
 <% if signed_in? %>
-  Welcome <%= @email %>
+  <p>Welcome <%= @user.name %></p>
+  <p>My Profile Photo</p>
+  <% if @user.avatar %>
+  	<%= image_tag(@user.avatar_url.to_s) %>
+  <% end %>
+
   <%= button_to "Sign out", sign_out_path, method: :delete %>
+  <%= link_to 'Edit My Profile', edit_user_path(current_user.id) %>
+	<%= link_to 'Create My Listing', new_user_listing_path(current_user) %>
+	<%= link_to 'Show All My Listings', user_listings_path(current_user) %>
+	<%= link_to 'Show All Public Listings', all_listings_path %>
+  <%= link_to 'Show All My Reservations', user_reservations_path(current_user) %>
 <% else %>
   <%= link_to "Sign in", sign_in_path %>
 <% end %>
+

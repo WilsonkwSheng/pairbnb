@@ -1,0 +1,15 @@
+Your Reservation Made AT INDEX:
+
+<% @reservation.each do |x| %>
+	<% if x.user_id == current_user.id %>
+		<p>User: <%= x.user.name %></p>
+		<p>Name: <%= x.listing.name %></p>
+		<p>Description: <%= x.listing.description %></p>
+		<p>Location: <%= x.listing.location %></p>
+		<p>Price: <%= x.listing.price %></p>
+		<p>Reservation Date: <%= x.start_of_reservation_date %> - <%= x.end_of_reservation_date%></p>
+		<%= link_to "Show This Reservation", user_reservation_path(current_user.id, x.id) %>
+	<% end %>
+<% end %>
+
+<%= link_to "Back", sign_in_path %>

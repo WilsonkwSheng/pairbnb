@@ -1,0 +1,20 @@
+<% if @errors.present? %>
+	<div>
+		<%= @errors %>
+	</div>
+<% end %>
+<div>
+	<div class="text-field">
+	  <%= form.label :start_of_reservation_date %>
+	  <%= form.date_field :start_of_reservation_date %>
+	</div>
+
+	<div class="text-field">
+	  <%= form.label :end_of_reservation_date %>
+	  <%= form.date_field :end_of_reservation_date %>
+	</div>	
+</div>
+
+
+
+

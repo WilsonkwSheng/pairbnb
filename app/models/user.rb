@@ -1,5 +1,13 @@
 class User < ApplicationRecord
-	has_many :authentications, dependent:  :destroy
+	has_many :authentications, dependent: :destroy
+  validates :password, presence: true, on: :create # only need password on create (doesnt apply to edit update)
+  has_many :listings, dependent: :destroy
+  has_many :reservations, dependent: :destroy
+
+  mount_uploader :avatar, AvatarUploader
+
+  enum role: { :customer => 0, :moderator => 1, :superadmin => 2 }
+
   include Clearance::User
 
   def self.create_with_auth_and_hash(authentication, auth_hash)

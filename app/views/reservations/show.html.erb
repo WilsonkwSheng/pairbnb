@@ -1,0 +1,13 @@
+Your Reservation Made AT SHOW:
+
+<p>Place: <%= @reservation.listing.name %></p>
+<p>Description: <%= @reservation.listing.description %></p>
+<p>Location: <%= @reservation.listing.location %></p>
+<p>Price: <%= @reservation.listing.price %></p>
+<p>Date: <%= @reservation.start_of_reservation_date %></p>
+<%= @reservation.end_of_reservation_date %>
+
+<p>Make your payment and enjoy</p>
+<p><%= link_to "Make Payment", braintree_new_path(listing_id: @reservation.listing.id, start_of_reservation_date: @reservation.start_of_reservation_date, end_of_reservation_date: @reservation.end_of_reservation_date) %></p>
+
+<p><%= link_to "Home", sign_in_path %></p>

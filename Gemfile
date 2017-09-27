@@ -13,7 +13,7 @@ gem 'pg', '~> 0.18'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
-gem 'bootstrap-sass', '~> 3.3.6'
+
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -38,6 +38,31 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+# Use Acts-As-Taggable-On for tagging
+gem 'acts-as-taggable-on'
+# Use Faker for auto-generated-text
+gem 'faker'
+# Use Will-Paginate for Page Seperation
+gem 'will_paginate', '~> 3.1.0'
+# Use CarrierWave for Upload Image
+gem 'carrierwave', '~> 1.0'
+# Use RMagick for Resizing Image
+gem "mini_magick"
+# Bootstrap
+gem 'bootstrap', '~> 4.0.0.beta'
+gem 'jquery-rails'
+gem 'jquery-ui-rails'
+# Use Braintree 
+gem 'braintree'
+# Use Letter-Opener
+gem "letter_opener", :group => :development
+# Use sidekiq
+gem 'sidekiq'
+# Use foreman
+gem 'foreman'
+# Use rails_12factor
+gem 'rails_12factor'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -45,6 +70,7 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
+  gem 'rest-client'
 end
 
 group :development do

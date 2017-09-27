@@ -1,0 +1,14 @@
+Hello All Of My Listing
+
+<% @listings.each do |list| %>
+	<p><%= image_tag(list.images[0].url) if list.images[0] %></p>
+	<p>Name: <%= list.name %></p>
+	<p>Description: <%= list.description %></p>
+	<p>Location: <%= list.location %></p>
+	<p>Price: <%= list.price %></p>
+	<%= link_to "Show This Listing", user_listing_path(current_user, list.id) %>
+	<%= link_to "Edit My Listing", edit_user_listing_path(current_user, list.id) %>
+	<%= link_to "Delete", user_listing_path(current_user, list), :method => :delete, :confirm => "Are you sure?" %>
+<% end %>
+
+<%= link_to "Back", sign_in_path %>
