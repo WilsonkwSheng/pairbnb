@@ -62,6 +62,8 @@ gem 'sidekiq'
 gem 'foreman'
 # Use rails_12factor
 gem 'rails_12factor'
+# Use Ruby Verion
+ruby "~> 2.3.0"
 
 
 group :development, :test do
