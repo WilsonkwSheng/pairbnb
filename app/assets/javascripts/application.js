@@ -87,3 +87,7 @@ $(document).on('turbolinks:load', function() {
         });
       });
 });
+
+//= require rails-ujs
+//= require turbolinks
+//= require_tree .
