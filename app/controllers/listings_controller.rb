@@ -46,7 +46,7 @@ class ListingsController < ApplicationController
 		@listing = Listing.find(params[:id])
 	end
 
-	def all
+	def all	
 		# @listing = Listing.starts_with(params[:name]).page(params[:page]).order('created_at DESC') if params[:name].present?
 		# @listing = Listing.location(params[:location]).page(params[:page]).order('created_at DESC') if params[:location].present?
 		# @listing = Listing.price(params[:price]).page(params[:page]).order('created_at DESC') if params[:price].present?
@@ -55,6 +55,7 @@ class ListingsController < ApplicationController
 		filtering_params(params).each do |key, value|
 			@listing = Listing.find_all_listing(current_user).public_send(key, value).page(params[:page]).order('created_at DESC') if value.present?
 		end
+		@all = Listing.all
 		####################################################
 	end
 
@@ -71,3 +72,23 @@ class ListingsController < ApplicationController
   	end
 end
 
+		# all = Listing.page(params[:page]).order('created_at DESC')
+		# if current_user.superadmin?
+		# 	if params[:search].nil?
+		# 		@listing = all
+		# 	else
+		# 		@listing = all.search(params[:search])
+		# 	end
+		# elsif current_user.moderator?
+		# 	if params[:search].nil?
+		# 		@listing = all.where(:verification => false)
+		# 	else
+		# 		@listing = all.search(params[:search]).where(:verification => false)
+		# 	end
+		# elsif current_user.customer? 
+		# 	if params[:search].nil?
+		# 		@listing = all.where(:verification => true)
+		# 	else
+		# 		@listing = all.search(params[:search]).where(:verification => false)
+		# 	end
+		# end

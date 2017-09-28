@@ -4,9 +4,7 @@ class Listing < ApplicationRecord
 	self.per_page = 10
 	mount_uploaders :images, ImageUploader
 
-
-	#Listing.start_name("sdfsdfs")
-
+	########### Explaination Listing.start_name("sdfsdfs") ######
 	scope :start_name, -> (input_name) { where name: input_name}
 	scope :location, -> (location) {where location: location}
 	scope :price, -> (price) {where price: price}
@@ -24,11 +22,11 @@ class Listing < ApplicationRecord
 
 	def self.find_all_listing(user)
 		if user.superadmin?
-			Listing.all#.page(params[:page]).order('created_at DESC')
+			Listing.all
 		elsif user.moderator?
-			Listing.where(:verification => false)#.page(params[:page]).order('created_at DESC')
+			Listing.where(:verification => false)
 		else
-			Listing.where(:verification => true)#.page(params[:page]).order('created_at DESC')
+			Listing.where(:verification => true)
 		end
 	end
 end
