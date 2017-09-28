@@ -50,12 +50,11 @@ class ListingsController < ApplicationController
 		# @listing = Listing.starts_with(params[:name]).page(params[:page]).order('created_at DESC') if params[:name].present?
 		# @listing = Listing.location(params[:location]).page(params[:page]).order('created_at DESC') if params[:location].present?
 		# @listing = Listing.price(params[:price]).page(params[:page]).order('created_at DESC') if params[:price].present?
-
+		@listing = Listing.all.page(params[:page]).order('created_at DESC')
 		############# Refactor above code ##################
 		filtering_params(params).each do |key, value|
-			@listing = Listing.find_all_listing(current_user).public_send(key, value).page(params[:page]).order('created_at DESC') if value.present?
+			@listing = @listing.find_all_listing(current_user).public_send(key, value) if value.present?
 		end
-		@all = Listing.all
 		####################################################
 	end
 

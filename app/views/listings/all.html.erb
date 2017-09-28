@@ -1,11 +1,14 @@
-<% @all.each do |list| %>		
-	<p><%= image_tag(list.images[0].url) if list.images[0] %></p>
-	<p>User: <%= list.user.name %></p>
-	<p>Place Name: <%= list.name %></p>
-	<p>Description: <%= list.description %></p>
-	<p>Location: <%= list.location %></p>
-	<p>Price: <%= list.price %></p>
-	<%= link_to "Show", user_listing_path(current_user, list.id) %>
+<% if !@listing.nil? %>
+<%= will_paginate @listing %>
+
+<% @listing.each do |list| %>
+		<p><%= image_tag(list.images[0].url) if list.images[0] %></p>
+		<p>User: <%= list.user.name %></p>
+		<p>Place Name: <%= list.name %></p>
+		<p>Description: <%= list.description %></p>
+		<p>Location: <%= list.location %></p>
+		<p>Price: <%= list.price %></p>
+		<%= link_to "Show", user_listing_path(current_user, list.id) %>
 		
 		<% if current_user.id == list.user.id %>
 			<%= link_to "Edit", edit_user_listing_path(current_user, list.id) %>
@@ -13,9 +16,8 @@
 		<% else %>
 			<%= link_to "Book Now", new_user_reservation_path(current_user, listing_id: list.id) %>
 		<% end %>		
-			<%= button_to "Verify", user_listing_path(current_user, list), :method => :put if !current_user.customer? && list.verification == false %>
-		<% end %>
-		<% if !@listing.nil? %>
-			<%= will_paginate @listing %>
-			<%= link_to "Back", sign_in_path %>
-		<% end %>
+		<%= button_to "Verify", user_listing_path(current_user, list), :method => :put if !current_user.customer? && list.verification == false %>
+<% end %>
+
+<%= link_to "Back", sign_in_path %>
+<% end %>
