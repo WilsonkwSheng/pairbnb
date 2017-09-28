@@ -7,7 +7,7 @@ class Listing < ApplicationRecord
 	########### Explaination Listing.start_name("sdfsdfs") ######
 	scope :start_name, -> (input_name) { where name: input_name}
 	scope :location, -> (location) {where location: location}
-	scope :price, -> (price) {where price: price}
+	scope :price, -> (price) {where("price < ?", price)}
 
 	########### Refactor Search Using Scope #####################
 	# search bar for listing display
