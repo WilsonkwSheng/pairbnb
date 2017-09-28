@@ -47,26 +47,15 @@ class ListingsController < ApplicationController
 	end
 
 	def all
-		all = Listing.page(params[:page]).order('created_at DESC')
-		if current_user.superadmin?
-			if params[:search].nil?
-				@listing = all
-			else
-				@listing = all.search(params[:search])
-			end
-		elsif current_user.moderator?
-			if params[:search].nil?
-				@listing = all.where(:verification => false)
-			else
-				@listing = all.search(params[:search]).where(:verification => false)
-			end
-		elsif current_user.customer? 
-			if params[:search].nil?
-				@listing = all.where(:verification => true)
-			else
-				@listing = all.search(params[:search]).where(:verification => false)
-			end
+		# @listing = Listing.starts_with(params[:name]).page(params[:page]).order('created_at DESC') if params[:name].present?
+		# @listing = Listing.location(params[:location]).page(params[:page]).order('created_at DESC') if params[:location].present?
+		# @listing = Listing.price(params[:price]).page(params[:page]).order('created_at DESC') if params[:price].present?
+
+		############# Refactor above code ##################
+		filtering_params(params).each do |key, value|
+			@listing = Listing.find_all_listing(current_user).public_send(key, value).page(params[:page]).order('created_at DESC') if value.present?
 		end
+		####################################################
 	end
 
 	private
@@ -75,6 +64,10 @@ class ListingsController < ApplicationController
 		if params[:listing]
       		params.require(:listing).permit(:name, :description, :location, :price, :user_id, {images: []})
   		end
+  	end
+
+  	def filtering_params(params)
+  		params.slice(:location, :start_name, :price)
   	end
 end
 
