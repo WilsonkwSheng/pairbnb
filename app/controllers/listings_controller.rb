@@ -71,6 +71,8 @@ class ListingsController < ApplicationController
   	end
 end
 
+################### The Existing Search #################################
+
 		# all = Listing.page(params[:page]).order('created_at DESC')
 		# if current_user.superadmin?
 		# 	if params[:search].nil?
@@ -91,3 +93,4 @@ end
 		# 		@listing = all.search(params[:search]).where(:verification => false)
 		# 	end
 		# end
+#########################################################################
