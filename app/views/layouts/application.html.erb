@@ -39,7 +39,7 @@
       <%= text_field_tag :location, params[:location], placeholder: "Search City" %>
       <%= text_field_tag :price, params[:price], placeholder: "Search Price" %>
 
-      <%= range_field_tag :price, :in => 0..1000, :step => 10 %>
+      <%= range_field_tag :price, nil, {min:10, max:1000, :step => 10, value: 200} %>
 
       <%= submit_tag "Search"%>
     <% end %>
