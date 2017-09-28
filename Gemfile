@@ -64,6 +64,8 @@ gem 'sidekiq'
 gem 'foreman'
 # Use rails_12factor
 gem 'rails_12factor'
+# Use Skylight for tracking app pairbnb speed
+gem 'skylight'
 
 
 
